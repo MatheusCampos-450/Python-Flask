@@ -4,10 +4,12 @@ from flask_script import Manager # Modulo que muda a forma de execução da ferr
 from flask_migrate import Migrate, MigrateCommand # Modulo que auxilia a migração do banco de dados
 
 app = Flask(__name__)
+app.config.from_object('config')
+
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-app.config.from_object('config')
+
 
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
