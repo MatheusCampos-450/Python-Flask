@@ -25,7 +25,7 @@ def numero(id):
     return ""
 
 
-# Declarando métodos
+# Limitando métodos que podem ser usados na página
 @app.route("/method/", methods=['GET'])
 def method():
     return "Oi!"
