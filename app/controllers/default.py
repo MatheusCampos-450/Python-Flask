@@ -1,14 +1,31 @@
 from app import app
 
+
 @app.route("/index")
 @app.route("/")
 def index():
-    return "Abacaxi"
+    return "Hello world!"
 
-@app.route("/test", defaults={'name': None})
-@app.route("/test/<name>")
+
+# Recebendo uma string como Route params
+@app.route("/test", defaults={'name': None}) # Definindo valor padrão como None
+@app.route("/test/<name>") # Passando route params
 def test(name):
     if name:
+        print(type(name))
         return "Olá, %s!" % name
     else:
-        return "olá, usuário!"
+        return "olá, usuário!" 
+    
+    
+# Recebendo um integer como route params
+@app.route("/numero/<int:id>")
+def numero(id):
+    print(type(id))
+    return ""
+
+
+# Declarando métodos
+@app.route("/method/", methods=['GET'])
+def method():
+    return "Oi!"
